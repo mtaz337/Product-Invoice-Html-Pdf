@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>Invoice</title>
+    <link rel="stylesheet" href="style.css" media="all" />
+    <script
+      src="https://code.jquery.com/jquery-1.12.4.min.js"
+      integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ="
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.5/jspdf.min.js"></script>
+    <input type="button" id="create_pdf" value="Generate PDF" />
+  </head>
+  <body class="bodyy">
+    <!-- <header class="clearfix">
+      <div id="company">
+        <h2 class="name" style="font-size: 1.2rem">Airbringr</h2>
+        <div>
+          <p>
+            Azhar Comfort Complex (Level 13) <br />
+            130/A Progati Sarani, Middle Badda <br />Bir Uttam Rafiqul Islam
+            Avenue <br />Dhaka-1212, Bangladesh
+          </p>
+        </div>
+        <div>+8801841247008</div>
+        <div style="color: skyblue">support@airbringr.com</div>
+      </div>
+    </header> -->
+    <div style="text-align: left">
+      <h2 class="name" style="font-size: 1.2rem">Airbringr</h2>
+
+      <div>+8801841247008</div>
+      <div style="color: skyblue">support@airbringr.com</div>
+      <hr style="margin-inline-end: 2.88cm" />
+    </div>
+    <main>
+      <div id="details" class="clearfix">
+        <div id="client">
+          <div class="to">INVOICE TO:</div>
+          <h2 class="name">Maynul Hossain Pavel</h2>
+          <div
+            class="address"
+            style="
+              white-space: nowrap;
+              width: 260px;
+              overflow: hidden;
+              text-overflow: ellipsis;
+              font-size: 8.5px;
+            "
+          >
+            93, Hrishikesh Das Road, Banianagar, Luxmi bazar, Dhaka-1100
+          </div>
+          <div class="email">
+            <a href="mailto:maynul.pavel362@gmail.com"
+              >maynul.pavel362@gmail.com</a
+            >
+          </div>
+          <div>+88018324347008</div>
+          <div id="invoice">
+            <h1>ITEM ID #3222</h1>
+            <h1 style="color: black">ZONE: UTTARA</h1>
+          </div>
+        </div>
+      </div>
+      <table border="0" cellspacing="0" cellpadding="0">
+        <thead>
+          <tr style="font-size: 8.5px">
+            <th class="no">#</th>
+            <th class="unit">PRODUCT NAME</th>
+            <th class="qty">QUANTITY</th>
+            <th class="edd">EDD</th>
+            <th class="due">DUE</th>
+            <th class="total">TOTAL</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="no">01</td>
+            <td class="desc">
+              <h3>HAVASU NUTRITION L Arginine...</h3>
+            </td>
+            <td class="qty">1</td>
+            <td class="edd">24/07/2022</td>
+            <td class="due">300</td>
+            <td class="total">৳1,200.00</td>
+          </tr>
+        </tbody>
+      </table>
+    </main>
+  </body>
+</html>
+<style>
+  @font-face {
+    font-family: SourceSansPro;
+    src: url(SourceSansPro-Regular.ttf);
+  }
+
+  .clearfix:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+
+  a {
+    color: #0087c3;
+    text-decoration: none;
+  }
+
+  body {
+    position: relative;
+    width: 9cm;
+    height: 29.7cm;
+    margin: 0;
+    color: #555555;
+    background: #ffffff;
+    font-family: Arial, sans-serif;
+    font-size: 10px;
+    font-family: SourceSansPro;
+  }
+
+  header {
+    padding: 10px 0;
+    margin-bottom: 5px;
+    border-bottom: 1px solid #aaaaaa;
+  }
+
+  #logo {
+    float: left;
+    margin-top: 8px;
+  }
+
+  #logo img {
+    height: 5rem;
+  }
+
+  #company {
+    float: right;
+    text-align: right;
+  }
+
+  #details {
+    margin-bottom: 10px;
+  }
+
+  #client {
+    padding-left: 6px;
+    border-left: 6px solid #0087c3;
+    float: left;
+  }
+
+  #client .to {
+    color: #777777;
+  }
+
+  h2.name {
+    font-size: 0.9em;
+    font-weight: normal;
+    margin: 0;
+  }
+
+  #invoice {
+    text-align: left;
+    float: left;
+  }
+
+  #invoice h1 {
+    color: #0087c3;
+    font-size: 0.8rem;
+    line-height: 1em;
+    font-weight: normal;
+    margin: 0 0 2px 0;
+  }
+
+  #invoice .date {
+    font-size: 1em;
+    color: #777777;
+  }
+
+  table {
+    width: 70%;
+    border-collapse: collapse;
+    border-spacing: 0;
+    margin-bottom: 20px;
+  }
+
+  table th,
+  table td {
+    padding: 2px;
+    background: #eeeeee;
+    text-align: center;
+    border-bottom: 1px solid #ffffff;
+  }
+
+  table th {
+    white-space: nowrap;
+    font-weight: normal;
+  }
+
+  table td {
+    text-align: center;
+  }
+
+  table td h3 {
+    color: #57b223;
+    font-size: 0.6rem;
+    font-weight: normal;
+    margin: 0 0 0.2em 0;
+  }
+
+  table .no {
+    color: #ffffff;
+    font-size: 0.8em;
+    background: #57b223;
+  }
+
+  table .desc {
+    text-align: left;
+  }
+
+  table .unit {
+    color: #555555;
+    width: 6px;
+  }
+
+  table .qty {
+    width: 4px;
+  }
+
+  table .total {
+    background: #57b223;
+    color: #ffffff;
+    width: 6px;
+  }
+
+  table td.unit,
+  table td.qty,
+  table td.total {
+    font-size: 1em;
+  }
+
+  table tbody tr:last-child td {
+    border: none;
+  }
+
+  table tfoot td {
+    padding: 10px 20px;
+    background: #ffffff;
+    border-bottom: none;
+    font-size: 0.8em;
+    white-space: nowrap;
+    border-top: 1px solid #aaaaaa;
+  }
+
+  table tfoot tr:first-child td {
+    border-top: none;
+  }
+
+  table tfoot tr:last-child td {
+    color: #57b223;
+    font-size: 0.9em;
+    border-top: 1px solid #57b223;
+  }
+
+  table tfoot tr td:first-child {
+    border: none;
+  }
+
+  #thanks {
+    font-size: 1.2em;
+    margin-bottom: 10px;
+  }
+
+  #notices {
+    padding-left: 6px;
+    border-left: 6px solid #0087c3;
+  }
+
+  #notices .notice {
+    font-size: 1.2em;
+  }
+
+  footer {
+    color: #777777;
+    width: 100%;
+    height: 30px;
+    position: absolute;
+    bottom: 0;
+    border-top: 1px solid #aaaaaa;
+    padding: 8px 0;
+    text-align: center;
+  }
+</style>
+
+<script>
+  (function () {
+    var form = $(".bodyy"),
+      cache_width = form.width(),
+      a4 = [340, 200]; // for a4 size paper width and height
+
+    $("#create_pdf").on("click", function () {
+      $("#create_pdf").css("display", "none");
+      $("body").scrollTop(0);
+      createPDF();
+    });
+    //create pdf
+    function createPDF() {
+      getCanvas().then(function (canvas) {
+        var img = canvas.toDataURL("image/png"),
+          doc = new jsPDF({
+            unit: "px",
+            format: "b7",
+          });
+        doc.addImage(img, "PNG", 20, 40);
+        doc.save("order_invoice.pdf");
+        form.width(cache_width);
+      });
+    }
+
+    // create canvas object
+    function getCanvas() {
+      form.width(a4[0] * 1.33333 - 80).css("max-width", "none");
+      return html2canvas(form, {
+        imageTimeout: 2000,
+        removeContainer: true,
+      });
+    }
+  })();
+</script>
+<script>
+  /*
+   * jQuery helper plugin for examples and tests
+   */
+  (function ($) {
+    $.fn.html2canvas = function (options) {
+      var date = new Date(),
+        $message = null,
+        timeoutTimer = false,
+        timer = date.getTime();
+      html2canvas.logging = options && options.logging;
+      html2canvas.Preload(
+        this[0],
+        $.extend(
+          {
+            complete: function (images) {
+              var queue = html2canvas.Parse(this[0], images, options),
+                $canvas = $(html2canvas.Renderer(queue, options)),
+                finishTime = new Date();
+
+              $canvas
+                .css({ position: "absolute", left: 0, top: 0 })
+                .appendTo(document.body);
+              $canvas.siblings().toggle();
+
+              $(window).click(function () {
+                if (!$canvas.is(":visible")) {
+                  $canvas.toggle().siblings().toggle();
+                  throwMessage("Canvas Render visible");
+                } else {
+                  $canvas.siblings().toggle();
+                  $canvas.toggle();
+                  throwMessage("Canvas Render hidden");
+                }
+              });
+              throwMessage(
+                "Screenshot created in " +
+                  (finishTime.getTime() - timer) / 1000 +
+                  " seconds<br />",
+                4000
+              );
+            },
+          },
+          options
+        )
+      );
+
+      function throwMessage(msg, duration) {
+        window.clearTimeout(timeoutTimer);
+        timeoutTimer = window.setTimeout(function () {
+          $message.fadeOut(function () {
+            $message.remove();
+          });
+        }, duration || 2000);
+        if ($message) $message.remove();
+        $message = $("<div ></div>")
+          .html(msg)
+          .css({
+            margin: 0,
+            padding: 5,
+            background: "#000",
+            opacity: 0.7,
+            position: "fixed",
+            top: 10,
+            right: 10,
+            fontFamily: "Tahoma",
+            color: "#fff",
+            fontSize: 12,
+            borderRadius: 12,
+            width: "auto",
+            height: "auto",
+            textAlign: "center",
+            textDecoration: "none",
+          })
+          .hide()
+          .fadeIn()
+          .appendTo("body");
+      }
+    };
+  })(jQuery);
+</script>
